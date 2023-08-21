@@ -15,10 +15,9 @@ Click here for the Course Syllabus: [https://nbviewer.org/github/huiprobable/MAT
 ## Additional CSULB Syllabus Statements
 
 * [COVID-19 Health and Safety Requirements](https://nbviewer.org/github/huiprobable/MATH473F23/blob/main/Syllabus/Syllabus.ipynb#COVID-19-Health-and-Safety-Requirements)
-* [Title IX Prohibits Gender Discrimination](https://nbviewer.org/github/huiprobable/MATH473F23/blob/main/Syllabus/Syllabus.ipynb#Title-IX-Prohibits-Gender-Discrimination)
-* [Supporting Undocument Students](https://nbviewer.org/github/huiprobable/MATH473F23/blob/main/Syllabus/Syllabus.ipynb#Supporting-Undocument-Students)
+* [Zero-Tolerance for Sexual/Gender-Based Harassment](https://nbviewer.org/github/huiprobable/MATH473F23/blob/main/Syllabus/Syllabus.ipynb#Zero-Tolerance-for-Sexual/Gender-Based-Harassment)
 * [Syllabus Statement on Basic Needs](https://nbviewer.org/github/huiprobable/MATH473F23/blob/main/Syllabus/Syllabus.ipynb#Syllabus-Statement-on-Basic-Needs)
-* [Syllabus Statement on Eliminating Anti-Blackness](https://nbviewer.org/github/huiprobable/MATH473F23/blob/main/Syllabus/Syllabus.ipynb#Syllabus-Statement-on-Eliminating-Anti-Blackness)
+* [CNSM Statement on Anti-Hate Speech/Promotion of Tolerance](https://nbviewer.org/github/huiprobable/MATH473F23/blob/main/Syllabus/Syllabus.ipynb#CNSM-Statement-on-Anti-Hate-Speech/Promotion-of-Tolerance)
 
 ## Course Content
 
