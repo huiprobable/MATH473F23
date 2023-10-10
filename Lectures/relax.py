@@ -31,7 +31,23 @@ def Poisson1D_GS_OneStep(b, u, stencil = [-1, 2, -1]):
     r = np.sqrt(r)
     return u, r
 
-methods = {'SOR':Poisson1D_SOR_OneStep, 'Jacobi': Poisson1D_Jacobi_OneStep, 'GS': Poisson1D_GS_OneStep}
+def ApplyOperator(r, stencil=[-1, 2, -1]):
+    n = r.shape[0]
+    Ar = np.copy(r)
+    for i in range(1,n-1):
+        Ar[i] = stencil[1]*r[i]+stencil[0]*r[i-1]+stencil[2]*r[i+1]
+    return Ar
+
+def Poisson1D_steepestDescent_OneStep(b, u, stencil = [-1, 2, -1]):
+    Au = ApplyOperator(u, stencil=stencil)
+    r = b - Au ### r = b-Au
+    Ar = ApplyOperator(r, stencil=stencil)
+    alpha = np.dot(r,r)/np.dot(r, Ar)  ### alpha = <r,r>/<r,r>_A
+    u = u +alpha*r
+    r = np.sqrt(np.dot(r,r))
+    return u, r
+
+methods = {'SOR':Poisson1D_SOR_OneStep, 'Jacobi': Poisson1D_Jacobi_OneStep, 'GS': Poisson1D_GS_OneStep, 'SD': Poisson1D_steepestDescent_OneStep}
 
 def Poisson1D(f, n, domain=[0,1], bdry_cond=[0,0], eps=1e-5, stencil=[-1, 2, -1], method='GS'):
     # set up the numerical parameters, as well as initial step. 
