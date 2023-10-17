@@ -47,7 +47,17 @@ def Poisson1D_steepestDescent_OneStep(b, u, stencil = [-1, 2, -1]):
     r = np.sqrt(np.dot(r,r))
     return u, r
 
-methods = {'SOR':Poisson1D_SOR_OneStep, 'Jacobi': Poisson1D_Jacobi_OneStep, 'GS': Poisson1D_GS_OneStep, 'SD': Poisson1D_steepestDescent_OneStep}
+def Poisson1D_conjugateGradient_OneStep(u, rk, pk, delta, stencil = [-1, 2, -1]):
+    sk = ApplyOperator(pk, stencil=stencil)
+    alpha = delta/np.dot(pk, sk)
+    u = u+alpha*pk
+    rk = rk-alpha*sk
+    delta2 = np.dot(rk,rk)
+    pk = rk+delta2/delta*pk
+    r = np.sqrt(np.dot(rk,rk))
+    return u, rk, pk, delta2, r
+
+methods = {'SOR':Poisson1D_SOR_OneStep, 'Jacobi': Poisson1D_Jacobi_OneStep, 'GS': Poisson1D_GS_OneStep, 'SD': Poisson1D_steepestDescent_OneStep, 'CG': Poisson1D_conjugateGradient_OneStep}
 
 def Poisson1D(f, n, domain=[0,1], bdry_cond=[0,0], eps=1e-5, stencil=[-1, 2, -1], method='GS'):
     # set up the numerical parameters, as well as initial step. 
@@ -61,8 +71,15 @@ def Poisson1D(f, n, domain=[0,1], bdry_cond=[0,0], eps=1e-5, stencil=[-1, 2, -1]
     num_iter = 0
     r = 1
     R = np.array([])
+    if method == 'CG':
+        rk = b
+        pk = np.copy(rk)
+        delta = np.dot(rk,rk)
     while r>eps and num_iter<100000:
-        u, r = methods[method](b, u, stencil=stencil)
+        if method=='CG':
+            u, rk, pk, delta, r = methods[method](u, rk, pk, delta, stencil=stencil)
+        else:
+            u, r = methods[method](b, u, stencil=stencil)
         num_iter += 1
         R = np.append(R,r)
     return u, num_iter, R
