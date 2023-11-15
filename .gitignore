@@ -166,3 +166,8 @@ cython_debug/
 *.jpg
 */SVD.ipynb
 *.mp4
+
+Lab5/*
+Assignment5Submissions/*
+*.npy
+Assignment5Submissions
